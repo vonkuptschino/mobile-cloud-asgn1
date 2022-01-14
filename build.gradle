@@ -1,23 +1,30 @@
 plugins {
-    id 'org.springframework.boot' version '2.4.2'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'org.springframework.boot' version '2.2.7.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
 }
 
-group = 'edu.vanderbilt.asgn'
+group = 'org.magnum.dataup'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '1.8'
 
 repositories {
     mavenCentral()
+
     flatDir {
         dirs 'lib'
     }
 }
 
 dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-web")
 
     implementation("org.apache.httpcomponents:httpclient:4.5.6")
+
+
+    implementation("org.hsqldb:hsqldb")
+
     implementation("com.google.guava:guava:17.0")
     implementation("org.apache.commons:commons-lang3:3.3.2")
     implementation("com.squareup.retrofit:retrofit:1.6.0")
@@ -29,12 +36,10 @@ dependencies {
     implementation(":autograder.handin:1.0.0")
     implementation(":autograder.spec:1.0.0")
 
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation("junit:junit")
 
-    runtimeOnly 'com.h2database:h2'
-    runtimeOnly 'junit:junit:4.12'
+    testImplementation('org.junit.platform:junit-platform-launcher')
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
 test {
